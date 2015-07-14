@@ -1,15 +1,13 @@
-'use strict';
-
 var app = require('app'),
-    shell = require('shell'),
-    request = require('request'),
-    path = require('path'),
-    Menu = require('menu'),
-    Tray = require('tray'),
-    BrowserWindow = require('browser-window');
+  shell = require('shell'),
+  request = require('request'),
+  path = require('path'),
+  Menu = require('menu'),
+  Tray = require('tray'),
+  BrowserWindow = require('browser-window');
 
-app.on('ready', function () {
-
+app.on('ready', function() {
+  
   var win = new BrowserWindow({
     width: 1000,
     height: 600,
@@ -18,13 +16,13 @@ app.on('ready', function () {
     show: false,
     frame: false
   });
-  win.on('closed', function () {
+  win.on('closed', function() {
     win = null;
   });
-
+  
   win.loadUrl('file://' + __dirname + '/pages/index.html');
   win.show();
-
+  
   var menu = Menu.buildFromTemplate(require('./menu/' + process.platform));
-  Menu.setApplicationMenu(menu);
+	Menu.setApplicationMenu(menu);
 });
